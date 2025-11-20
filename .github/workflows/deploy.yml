@@ -35,5 +35,5 @@ jobs:
       - name: Deploy to AWS Lambda
         run: |
           aws lambda update-function-code \
-            --function-name mi-lambda-ejemplo \
+            --function-name get-proyectos-portafolio-lambda \
             --zip-file fileb://function.zip
