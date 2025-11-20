@@ -1,5 +1,13 @@
+# lambda_function.py
+
+from services.project_service import ProjectService
+from utils.responses import success, error
+
+
 def lambda_handler(event, context):
-    return {
-        "statusCode": 200,
-        "body": "Hola desde Lambda desplegada con GitHub Actions 🎉 Prueba"
-    }
+    params = event.get("queryStringParameters") or {}
+
+    if "skill" in params:
+        return success(ProjectService.get_projects_by_skill(params["skill"]))
+
+    return success(ProjectService.get_all_projects())
