@@ -1,7 +1,7 @@
 # lambda_function.py
 
 from services.project_service import ProjectService
-from utils.responses import success, error
+from utils.response import success, error
 
 
 def lambda_handler(event, context):
