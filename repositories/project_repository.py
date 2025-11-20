@@ -12,11 +12,21 @@ class ProjectRepository:
 
     @staticmethod
     def query_by_skill(skill_id: str):
-        response = table.query(
-            IndexName="GSI1",
-            KeyConditionExpression=Key("GSI1PK").eq(skill_id)
-        )
-        return response.get("Items", [])
+        # 1. Obtener items del índice
+        gsi_items = ProjectRepository.query_by_skill(skill_id)
+
+        projects = []
+
+        for gsi_item in gsi_items:
+            pid = gsi_item["projectId"]
+
+            # 2. Obtener el item completo del proyecto
+            full_project = ProjectRepository.get_by_id(pid)
+
+            if full_project:
+                projects.append(full_project)
+
+        return projects
 
     @staticmethod
     def get_by_id(project_id: str):
