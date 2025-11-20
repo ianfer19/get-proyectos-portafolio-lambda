@@ -2,7 +2,7 @@ name: Deploy Lambda via AWS CLI
 
 on:
   push:
-    branches: [ "main" ]   # Cambia la rama si lo deseas
+    branches: [ "produccion" ]   # Cambia la rama si lo deseas
 
 jobs:
   deploy:
