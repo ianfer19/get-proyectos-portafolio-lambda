@@ -1,7 +1,7 @@
 import boto3
 from botocore.config import Config
 
-DYNAMO_TABLE_NAME = "projects"
+DYNAMO_TABLE_NAME = "iam-portafolio-projects-pdn"
 
 _config = Config(
     retries={
