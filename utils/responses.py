@@ -1,15 +1,15 @@
-import json
+from services.project_service import ProjectService
+from utils.responses import success, error
 
-def success(body, status=200):
-    return {
-        "statusCode": status,
-        "headers": {"Content-Type": "application/json"},
-        "body": json.dumps(body)
-    }
+def lambda_handler(event, context):
+    params = event.get("queryStringParameters") or {}
 
-def error(message, status=400):
-    return {
-        "statusCode": status,
-        "headers": {"Content-Type": "application/json"},
-        "body": json.dumps({"error": message})
-    }
+    # Filtro por skill
+    if "skill" in params:
+        skill_id = params["skill"]
+        data = ProjectService.get_projects_by_skill(skill_id)
+        return success(data)
+
+    # Obtener todos
+    data = ProjectService.get_all_projects()
+    return success(data)
