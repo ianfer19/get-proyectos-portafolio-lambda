@@ -24,6 +24,8 @@ Logs / Debug	🪵	🪵 log: agrega logging en servicio de tokens
 Seeds / datos iniciales	🌱	🌱 seed: inserta usuarios de prueba
 Tests backend	✅	✅ test(api): añade pruebas para endpoint de login
 Revertir cambios	⏪	⏪ revert(api): revierte bug introducido
+🛠 infra: actualiza nombre de lambda en serverless.yml
+🔧 config: sincroniza nombres de lambdas en configuración
 
 🛠 Infraestructura / DevOps
 Propósito	Emoji	Ejemplo
