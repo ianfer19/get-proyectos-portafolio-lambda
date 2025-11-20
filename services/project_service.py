@@ -10,14 +10,14 @@ class ProjectService:
 
     @staticmethod
     def get_projects_by_skill(skill_id: str):
-        # Items del índice GSI
         gsi_items = ProjectRepository.query_by_skill(skill_id)
-
         projects = []
-        
+
         for gsi_item in gsi_items:
             project_id = gsi_item["projectId"]
-            full_project = ProjectRepository.get_by_id(project_id)
+            project_name = gsi_item["name"]  # IMPORTANTE
+
+            full_project = ProjectRepository.get_by_id(project_id, project_name)
             if full_project:
                 projects.append(full_project)
 
