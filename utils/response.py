@@ -1,15 +1,26 @@
 import json
 
-def success(body, status=200):
+def success(body):
     return {
-        "statusCode": status,
-        "headers": {"Content-Type": "application/json"},
+        "statusCode": 200,
+        "headers": {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers": "*",
+            "Access-Control-Allow-Methods": "GET, OPTIONS"
+        },
         "body": json.dumps(body)
     }
 
-def error(message, status=400):
+
+def error(message):
     return {
-        "statusCode": status,
-        "headers": {"Content-Type": "application/json"},
+        "statusCode": 500,
+        "headers": {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers": "*",
+            "Access-Control-Allow-Methods": "GET, OPTIONS"
+        },
         "body": json.dumps({"error": message})
     }
